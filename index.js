@@ -352,3 +352,95 @@
 // }
 
 // console.info(cetakNilaiAkhir(mahasiswa1))
+
+
+// function fundamental
+
+// latihan function sandhika 
+
+// function jumlahkanDuaKubus(a,b){
+//     const kubusA = a ** 3;
+//     const kubusB = b ** 3;
+//     return kubusA + kubusB
+// }
+
+// console.info(jumlahkanDuaKubus(8,3))
+// console.info(jumlahkanDuaKubus(10,4))
+
+// 🎯 Mini Project: Kalkulator Biaya Belanja
+
+// const belanjaThio = [
+//     {namaProduk: "sabun",harga:5000,qyt:5},
+//     {namaProduk: "beras",harga:40000,qyt:2},
+//     {namaProduk: "terigu",harga:8000,qyt:6}
+// ]
+
+// function hitungTotalBelanja(nama,obj){
+//     let total = 0;
+//     let daftarProduk = "";
+//     let qytP = 0;
+//     obj.forEach(({harga,qyt,namaProduk}) => {
+//         total += harga * qyt
+//         daftarProduk += `\n ${namaProduk} ${qyt}x,`;
+//     })
+    
+
+//     if(obj.length === 0){
+//         return `Tidak ada Belanjaan`;
+//     }else {
+//         return `halo ${nama}, total belanja kamu adalah Rp${total.toLocaleString("ID")} berikut Produk yang di beli${daftarProduk}.`;
+//     }
+// }
+
+// console.info(hitungTotalBelanja("thio",belanjaThio))
+
+
+
+//🎯 Mini Project: Kalkulator Belanja + Diskon dan Pajak
+
+// const belanjaThio = [
+//     { namaProduk: "Sabun", harga: 5000, qty: 5 },
+//     { namaProduk: "Beras", harga: 40000, qty: 2 },
+//     { namaProduk: "Terigu", harga: 8000, qty: 6 }
+// ];
+
+// function hitungBelanjaLengkap(nama, obj) {
+//     if (obj.length === 0) {
+//         return `Cart belanja kosong.`;
+//     }
+
+//     let produk = "";
+//     let totalBelanja = 0;
+
+//     obj.forEach(({ namaProduk, harga, qty }) => {
+//         totalBelanja += harga * qty;
+//         produk += `\n- ${namaProduk} (${qty}x)`;
+//     });
+
+//     function hitungDiskon(hargaAwal) {
+//         if (hargaAwal > 100000) {
+//             return hargaAwal * 0.10;
+//         }
+//         return 0;
+//     }
+
+//     function hitungPajak(setelahDiskon) {
+//         return setelahDiskon * 0.11;
+//     }
+
+//     const diskon = hitungDiskon(totalBelanja);
+//     const setelahDiskon = totalBelanja - diskon;
+//     const pajak = hitungPajak(setelahDiskon);
+//     const totalAkhir = Math.round(setelahDiskon + pajak);
+
+//     return `Halo ${nama}, rincian belanja kamu:
+// Total Belanja Sebelum Diskon : Rp${totalBelanja.toLocaleString("id-ID")}
+// Diskon (10%)                 : Rp${diskon.toLocaleString("id-ID")}
+// Pajak (11%)                  : Rp${Math.round(pajak).toLocaleString("id-ID")}
+// Total Akhir yang Harus Dibayar: Rp${totalAkhir.toLocaleString("id-ID")}
+
+// Daftar Produk:${produk}
+// `;
+// }
+
+// console.log(hitungBelanjaLengkap("Thio", belanjaThio));
