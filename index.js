@@ -163,7 +163,7 @@
 
 // console.info(umur)
 
-// // swap 
+// // swap
 
 // let satu = 1;
 // let dua = 2;
@@ -179,9 +179,7 @@
 // const [one,...rest] = nyoba();
 // console.info(rest[0])
 
-
 // destructuring object
-
 
 // ({thio:nama, ...value} = {
 //   id: 123,
@@ -197,7 +195,7 @@
 
 // console.info(getId(value))
 
-// kasus 
+// kasus
 
 // const mahasiswa = [
 //   {
@@ -220,15 +218,13 @@
 //   }
 // ];
 
-
 // const [ { nama, jurusan, kontak:{ email = "belum ada", hp } } ] = mahasiswa;
 
 // function cetakSemuaNama(listMhs){
 //   listMhs.map(({ nama }) => {
-    
+
 //   })
 // }
-
 
 // mahasiswa.push({
 //   nama: "Rina",
@@ -239,10 +235,7 @@
 //   }
 // })
 
-
-
 // cetakSemuaNama(mahasiswa);
-
 
 // function penjumlahanPerkalian(a,b){
 //   return {
@@ -353,10 +346,9 @@
 
 // console.info(cetakNilaiAkhir(mahasiswa1))
 
-
 // function fundamental
 
-// latihan function sandhika 
+// latihan function sandhika
 
 // function jumlahkanDuaKubus(a,b){
 //     const kubusA = a ** 3;
@@ -383,7 +375,6 @@
 //         total += harga * qyt
 //         daftarProduk += `\n ${namaProduk} ${qyt}x,`;
 //     })
-    
 
 //     if(obj.length === 0){
 //         return `Tidak ada Belanjaan`;
@@ -393,8 +384,6 @@
 // }
 
 // console.info(hitungTotalBelanja("thio",belanjaThio))
-
-
 
 //🎯 Mini Project: Kalkulator Belanja + Diskon dan Pajak
 
@@ -444,3 +433,81 @@
 // }
 
 // console.log(hitungBelanjaLengkap("Thio", belanjaThio));
+
+// Parameter dan arugment
+
+// Soal 1: Function Sederhana
+
+function ucapSalam(nama) {
+  return `Halo, ${nama}! Selamat datang di website kami.`;
+}
+
+console.info(ucapSalam("Thio"));
+
+// Soal 2: Function Penjumlahan
+
+function jumlahkan(a, b) {
+  return a + b;
+}
+
+console.info(jumlahkan(5, 6));
+
+// Soal 3: Function dengan Default Parameter
+
+function tampilkanPesan(pesan, nama = "Pengunjung") {
+  return `${pesan}, ${nama}`;
+}
+
+console.info(tampilkanPesan("Selamat Datang"));
+console.info(tampilkanPesan("Selamat Datang", "Thio"));
+
+// 💡 Ide Proyek Mini: "Kalkulator Sederhana dengan Fungsi"
+
+function penjumlahan(a, b) {
+  return a + b;
+}
+
+function pengurangan(a, b) {
+  return a - b;
+}
+
+function perkalian(a, b) {
+  return a * b;
+}
+
+function pembagian(a, b) {
+  return a / b;
+}
+
+let ulangi;
+
+do {
+  let inputUser = prompt(
+    "Pilih program Matematika: penjumlahan,pengurangan,perkalian,pembagian"
+  );
+  let sesi1 = Number(prompt("masukkan angka pertama"));
+  let sesi2 = Number(prompt("masukkan angka kedua"));
+
+  if (isNaN(sesi1) || isNaN(sesi2)) {
+    alert("Masukkan hanya angka saja!");
+  } else if (inputUser === "pembagian" && sesi2 === 0) {
+    alert("Tidak bisa membagi dengan nol!");
+  } else if (inputUser === "penjumlahan") {
+    alert(
+      `hasil dari ${sesi1} + ${sesi2} adalah : ${penjumlahan(sesi1, sesi2)}`
+    );
+  } else if (inputUser === "pengurangan") {
+    alert(
+      `hasil dari ${sesi1} - ${sesi2} adalah : ${pengurangan(sesi1, sesi2)}`
+    );
+  } else if (inputUser === "perkalian") {
+    alert(`hasil dari ${sesi1} x ${sesi2} adalah : ${perkalian(sesi1, sesi2)}`);
+  } else if (inputUser === "pembagian") {
+    alert(`hasil dari ${sesi1} : ${sesi2} adalah : ${pembagian(sesi1, sesi2)}`);
+  } else {
+    alert(`anda tidak memilih Program Matematika!`);
+  }
+  ulangi = prompt("Apakah Anda ingin mencoba lagi? (y/n)").toLowerCase();
+} while (ulangi === "y");
+
+alert("Terima kasih sudah menggunakan kalkulator ini! 🙌");
