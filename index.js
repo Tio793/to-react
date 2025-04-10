@@ -438,76 +438,152 @@
 
 // Soal 1: Function Sederhana
 
-function ucapSalam(nama) {
-  return `Halo, ${nama}! Selamat datang di website kami.`;
+// function ucapSalam(nama) {
+//   return `Halo, ${nama}! Selamat datang di website kami.`;
+// }
+
+// console.info(ucapSalam("Thio"));
+
+// // Soal 2: Function Penjumlahan
+
+// function jumlahkan(a, b) {
+//   return a + b;
+// }
+
+// console.info(jumlahkan(5, 6));
+
+// // Soal 3: Function dengan Default Parameter
+
+// function tampilkanPesan(pesan, nama = "Pengunjung") {
+//   return `${pesan}, ${nama}`;
+// }
+
+// console.info(tampilkanPesan("Selamat Datang"));
+// console.info(tampilkanPesan("Selamat Datang", "Thio"));
+
+// // 💡 Ide Proyek Mini: "Kalkulator Sederhana dengan Fungsi"
+
+// function penjumlahan(a, b) {
+//   return a + b;
+// }
+
+// function pengurangan(a, b) {
+//   return a - b;
+// }
+
+// function perkalian(a, b) {
+//   return a * b;
+// }
+
+// function pembagian(a, b) {
+//   return a / b;
+// }
+
+// let ulangi;
+
+// do {
+//   let inputUser = prompt(
+//     "Pilih program Matematika: penjumlahan,pengurangan,perkalian,pembagian"
+//   );
+//   let sesi1 = Number(prompt("masukkan angka pertama").toLowerCase());
+//   let sesi2 = Number(prompt("masukkan angka kedua").toLowerCase());
+
+//   if (isNaN(sesi1) || isNaN(sesi2)) {
+//     alert("Masukkan hanya angka saja!");
+//   } else if (inputUser === "pembagian" && sesi2 === 0) {
+//     alert("Tidak bisa membagi dengan nol!");
+//   } else if (inputUser === "penjumlahan") {
+//     alert(
+//       `hasil dari ${sesi1} + ${sesi2} adalah : ${penjumlahan(sesi1, sesi2)}`
+//     );
+//   } else if (inputUser === "pengurangan") {
+//     alert(
+//       `hasil dari ${sesi1} - ${sesi2} adalah : ${pengurangan(sesi1, sesi2)}`
+//     );
+//   } else if (inputUser === "perkalian") {
+//     alert(`hasil dari ${sesi1} x ${sesi2} adalah : ${perkalian(sesi1, sesi2)}`);
+//   } else if (inputUser === "pembagian") {
+//     alert(`hasil dari ${sesi1} : ${sesi2} adalah : ${pembagian(sesi1, sesi2)}`);
+//   } else {
+//     alert(`anda tidak memilih Program Matematika!`);
+//   }
+//   ulangi = prompt("Apakah Anda ingin mencoba lagi? (y/n)").toLowerCase();
+// } while (ulangi === "y");
+
+// alert("Terima kasih sudah menggunakan kalkulator ini! 🙌");
+
+// function jumlahLuasBalok(p1, l1, t1, p2, l2, t2) {
+//   // let luas1 = 2 * (p1 * l1 + p1 * t1 + l1 * t1); // tidak perlu menggunakan variabel
+//   // let luas2 = 2 * (p2 * l2 + p2 * t2 + l2 * t2); // tidak perlu menggunakan variabel
+//   // let totalLuas = luas1 + luas2; // tidak perlu juga menggunakan variabel
+//   return (2 * (p1 * l1 + p1 * t1 + l1 * t1)) + (2 * (p2 * l2 + p2 * t2 + l2 * t2)); //langsung kembalikan nilai nya
+// }
+
+// for(let i = 10; i >= 1 ; i--){
+//   console.log(i)
+// }
+
+// function test(n){
+//   if(n === 0) return;
+
+//   console.info(n);
+//   return test(n-1);
+// }
+
+// test(10)
+
+// function faktorial(n) {
+//   if (n === 0) return 1;
+//   return n * faktorial(n - 1);
+// }
+
+// console.info(faktorial(5))
+
+// 📘 Soal 1: Base Case
+
+// function hitungMundur(n){
+//   if(n === 0) return;
+//   console.log(n);
+//   return hitungMundur(n-1);
+// }
+
+// hitungMundur(5)
+
+// 📘 Soal 2: Faktorial Rekursif
+
+// function faktorial(n){
+//   if(n === 0) return 1;
+//   return n * faktorial(n-1);
+// }
+
+// console.info(faktorial(5))
+
+// Soal 3: Deret Fibonacci
+
+// Output: 3
+
+// function fibo(n){
+//   if(n <= 1){
+//      return n;
+//   }else{
+//      return fibo(n-1) + fibo(n-2);
+//   }
+// }
+
+// console.info(fibo(5))
+
+function fibonacci(n) {
+  if (n < 2) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
-console.info(ucapSalam("Thio"));
+console.info(fibonacci(4));
 
-// Soal 2: Function Penjumlahan
+// 📘 Soal 4: Total Jumlah Angka
 
-function jumlahkan(a, b) {
-  return a + b;
-}
+// function jumlahAngka(n){
+//   if(n === 0) return 0;
+//   return n + jumlahAngka(n - 1)
+// }
 
-console.info(jumlahkan(5, 6));
-
-// Soal 3: Function dengan Default Parameter
-
-function tampilkanPesan(pesan, nama = "Pengunjung") {
-  return `${pesan}, ${nama}`;
-}
-
-console.info(tampilkanPesan("Selamat Datang"));
-console.info(tampilkanPesan("Selamat Datang", "Thio"));
-
-// 💡 Ide Proyek Mini: "Kalkulator Sederhana dengan Fungsi"
-
-function penjumlahan(a, b) {
-  return a + b;
-}
-
-function pengurangan(a, b) {
-  return a - b;
-}
-
-function perkalian(a, b) {
-  return a * b;
-}
-
-function pembagian(a, b) {
-  return a / b;
-}
-
-let ulangi;
-
-do {
-  let inputUser = prompt(
-    "Pilih program Matematika: penjumlahan,pengurangan,perkalian,pembagian"
-  );
-  let sesi1 = Number(prompt("masukkan angka pertama"));
-  let sesi2 = Number(prompt("masukkan angka kedua"));
-
-  if (isNaN(sesi1) || isNaN(sesi2)) {
-    alert("Masukkan hanya angka saja!");
-  } else if (inputUser === "pembagian" && sesi2 === 0) {
-    alert("Tidak bisa membagi dengan nol!");
-  } else if (inputUser === "penjumlahan") {
-    alert(
-      `hasil dari ${sesi1} + ${sesi2} adalah : ${penjumlahan(sesi1, sesi2)}`
-    );
-  } else if (inputUser === "pengurangan") {
-    alert(
-      `hasil dari ${sesi1} - ${sesi2} adalah : ${pengurangan(sesi1, sesi2)}`
-    );
-  } else if (inputUser === "perkalian") {
-    alert(`hasil dari ${sesi1} x ${sesi2} adalah : ${perkalian(sesi1, sesi2)}`);
-  } else if (inputUser === "pembagian") {
-    alert(`hasil dari ${sesi1} : ${sesi2} adalah : ${pembagian(sesi1, sesi2)}`);
-  } else {
-    alert(`anda tidak memilih Program Matematika!`);
-  }
-  ulangi = prompt("Apakah Anda ingin mencoba lagi? (y/n)").toLowerCase();
-} while (ulangi === "y");
-
-alert("Terima kasih sudah menggunakan kalkulator ini! 🙌");
+// console.info(jumlahAngka(5))
