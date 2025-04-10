@@ -572,12 +572,12 @@
 
 // console.info(fibo(5))
 
-function fibonacci(n) {
-  if (n < 2) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
-}
+// function fibonacci(n) {
+//   if (n < 2) return n;
+//   return fibonacci(n - 1) + fibonacci(n - 2);
+// }
 
-console.info(fibonacci(4));
+// console.info(fibonacci(4));
 
 // 📘 Soal 4: Total Jumlah Angka
 
@@ -587,3 +587,39 @@ console.info(fibonacci(4));
 // }
 
 // console.info(jumlahAngka(5))
+
+// 🛠️ Mini Project: "Rekursi Explorer"
+
+// function hitungMundur(n){
+//   if(n === 0) return [];
+//   return [n].concat(hitungMundur(n-1));
+// }
+
+// function faktorial(n){
+//   if(n === 0) return 1;
+//   return n * faktorial(n-1);
+// }
+
+// function jumlahkan(n){
+//   if(n === 0) return 0;
+//   return n + jumlahkan(n-1);
+// }
+
+// function fibonacci(n){
+//   if(n < 2) return n;
+//   return fibonacci(n - 1) + fibonacci(n - 2);
+// }
+
+// function tampilkanHasil(){
+//   const input = parseInt(document.getElementById("angkaInput").value);
+//   if(isNaN(input) || input < 0){
+//     alert("Masukkan angka yang valid!");
+//     return;
+//   }
+//   document.getElementById("hasil").innerHTML = `
+//     <h2>Hasil Rekursi</h2>
+//     <p><strong>Hitung Mundur: </strong>${hitungMundur(input).join(", ")}</p>
+//     <p><strong>Faktorial: </strong>${faktorial(input)}</p>
+//     <p><strong>Jumlah Angka: </strong>${jumlahkan(input)}</p>
+//     <p><strong>Fibonacci Ke-${input}:</strong>${fibonacci(input)}</p>`
+// }
