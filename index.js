@@ -623,3 +623,128 @@
 //     <p><strong>Jumlah Angka: </strong>${jumlahkan(input)}</p>
 //     <p><strong>Fibonacci Ke-${input}:</strong>${fibonacci(input)}</p>`
 // }
+
+// Function Deklarasi dan Function Exppression
+
+// 💻 Soal Praktik:
+// function greetUser(name) {
+//   alert(`Halo ${name}`)
+// }
+
+// greetUser("Thio")
+
+// let sayHello = function(name){
+//   alert(`Halo ${name}!`)
+// }
+
+// sayHello("Thio")
+
+// let siswa = ["adit","dontol","jarwo","sopo"]
+// console.info(siswa)
+// let hapusSiswa = function(nama){
+//   if(nama === "dontol"){
+//     siswa.pop()
+//   }
+//   console.info(siswa)
+// }
+
+// hapusSiswa(siswa)
+
+// 🧩 Bagian 2: Mini Project
+// 🎯 Nama: “Sistem Pencatatan Kehadiran Siswa”
+
+// let daftarSiswa = [];
+// function tambahSiswa(nama) {
+//   daftarSiswa.push(nama);
+//   console.info(`Menambahkan ${nama} ke daftar siswa.`);
+// }
+
+// let tampilkanSiswa = function() {
+//   console.info("Daftar Siswa:");
+//   for (let i = 0; i < daftarSiswa.length; i++) {
+//     console.info(`${i + 1}. ${daftarSiswa[i]}`);
+//   }
+// }
+
+// (function(){
+//   console.info("Sistem kehadiran siap digunakan!")
+// })
+
+// let hapusSiswa = function(nama) {
+//   let index = daftarSiswa.indexOf(nama);
+//   if (index !== -1) {
+//     daftarSiswa.splice(index, 1);
+//     console.info(`Menghapus ${nama} dari daftar siswa.`);
+//   } else {
+//     console.warn(`Siswa dengan nama ${nama} tidak ditemukan.`);
+//   }
+// };
+
+// let siswa = ["adit","dontol","jarwo","sopo"]
+
+// let index = siswa.indexOf("jarwo")
+// siswa.splice(index,1)
+
+// console.info(siswa)
+
+// let buah = ["pisang", "semangka"];
+// let cari = "durian";
+// let index = buah.indexOf(cari);
+
+// // Lengkapi bagian ini
+// if (index !== buah) {
+//   console.log("Data tidak ditemukan");
+// }
+
+// let siswa = ["thio","budi","ayu"]
+// let index = siswa.indexOf("ayu")
+// if(index !== siswa){
+//   console.info("Ayu Hadir")
+// }else{
+//   console.info("Ayu tidak hadir")
+// }
+
+// let daftarSiswa = ["thio","budi","ayu"]
+
+// function cekHadir(nama){
+//   let index = daftarSiswa.indexOf(nama)
+
+//   if(index !== -1){
+//     console.info(true)
+//   }else{
+//     console.info(false)
+//   }
+// }
+
+// let daftar = ["satu", "dua", "tiga"];
+
+// let adaDalamList = function(nama){
+//   let index = daftar.indexOf(nama)
+
+//   if(index !== -1){
+//     return index !== -1
+//   }else{
+//     return index !== -1
+//   }
+// }
+
+// let peserta = ["Andi", "Budi", "Citra"];
+
+// let index = peserta.indexOf("Budi")
+
+// if(index !== -1){
+//   peserta.splice(index,1)
+// }
+
+// console.info(peserta)
+
+// let data = ["Sinta", "Riko", "Dian"];
+
+// function hapusJikaAda(nama){
+//   if(data.indexOf(nama) !== -1){
+//     data.splice(data.indexOf(nama),1)
+//     return data
+//   }else{
+//     return `Data tidak di temukan`
+//   }
+// }
