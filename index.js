@@ -862,34 +862,193 @@
 
 
 // ambil semua elemen video 
-const videos  = document.querySelectorAll("[data-duration]")
+// const videos  = document.querySelectorAll("[data-duration]")
 
-// pilih hanya yang javascipt lanjutan
+// // pilih hanya yang javascipt lanjutan
 
-let jsLanjut = [...videos].filter(video => video.textContent.includes("JAVASCRIPT LANJUTAN"))
+// let jsLanjut = [...videos].filter(video => video.textContent.includes("JAVASCRIPT LANJUTAN"))
 
-// ambil durasi masing masing video
-.map(item => item.dataset.duration)
+// // ambil durasi masing masing video
+// .map(item => item.dataset.duration)
 
-// ubah durasi menjadi Number, ubah menit menjadi detik
-.map(waktu => {
-    // "10:30" -> [10, 30] split
-    const parts = waktu.split(":").map(part => Number(part))
-    return (parts[0] * 60) + parts[1]
+// // ubah durasi menjadi Number, ubah menit menjadi detik
+// .map(waktu => {
+//     // "10:30" -> [10, 30] split
+//     const parts = waktu.split(":").map(part => Number(part))
+//     return (parts[0] * 60) + parts[1]
+// })
+
+// // jumlahkan semua detik
+// .reduce((acc,a) => acc + a);
+// //  ubah formatnya jadi jam menit detik
+// const jam = Math.floor(jsLanjut / 3600)
+// jsLanjut = jsLanjut - jam * 3600;
+// const menit = Math.floor(jsLanjut / 60)
+// const detik = jsLanjut - menit * 60
+
+// // simpan di DOM 
+// const pDurasi = document.querySelector(".total-durasi")
+// pDurasi.textContent = `${jam} Jam ${menit} Menit ${detik} Detik.`
+
+// const pVideo = document.querySelector(".jumlah-video")
+// const jumlahVideo = [...videos].filter(video => video.textContent.includes("JAVASCRIPT LANJUTAN")).length
+// pVideo.textContent = `${jumlahVideo} Video.`
+
+// callBack
+
+// function bacaFile(namaFile,callback){
+//     setTimeout(() => {
+//         const data = `Data dari file`
+//         console.info(`Data dari file ${namaFile} telah selesai dibaca.`)
+//         callback(data)
+//     },1000)
+// }
+
+// function prosesData(data,callback){
+//     setTimeout(() => {
+//         const hasil = data.toUppperCase();
+//         console.info(`Data telah diproses:`, hasil)
+//         callback(hasil)
+//     },1000)
+// }
+
+// function tampilkanHasil(hasil,callback){
+//     setTimeout(() => {
+//         console.info(`Hasil pemrosesan:`, hasil)
+//         callback()
+//     },1000)
+// }
+
+// bacaFile("data.txt", data => {
+//     prosesData(data, hasil => {
+//         tampilkanHasil(hasil, () => {
+//             console.info("Selesai")
+//         })
+//     })
+// })
+
+// 🧠 Latihan 1: Fungsi dasar dengan callback
+// function halo(nama){
+//     console.info(`Halo ${nama}!`)
+// }
+
+// function prosesCetakNama(callback){
+//     const nama = "Thio"
+//     callback(nama)
+// }
+
+// prosesCetakNama(halo)
+
+// 🧠 Latihan 2: Fungsi hitung dan callback
+// function hitungAngka(a,b,callback){
+//     const hasil = a + b;
+//     callback(a,b,hasil)
+// }
+
+// function hasilPenjumlahan(a,b,nilai){
+//     console.info(`hasil dari ${a} + ${b} penjumlahan nya adalah ${nilai}`)
+// }
+
+// hitungAngka(8,8,hasilPenjumlahan)
+
+// 🧠 Latihan 3: Simulasi proses lambat (pakai setTimeout)
+
+// function prosesData(callBack){
+//     console.info("Memproses data...")
+//     setTimeout(() => {
+//         const hasil = "Data telah di Proses.. 🚀"
+//         callBack(hasil)
+//     },1000)
+// }
+
+// function tampilkanHasil(hasil){
+//     console.info(`Hasil Callback : ${hasil}`)
+// }
+
+// prosesData(tampilkanHasil)
+
+// 🧩 Latihan 4: Callback bersarang (Nested Callback)
+// function ambilDataUser(callback){
+//     setTimeout(() => {
+//         const user = {id: 1, nama: "thio" }
+//         callback(user)
+//     },1000)
+// }
+
+// function ambilNilaiUser(user,callback){
+//     setTimeout(() => {
+//         const nilai = {userId: user.id, nilai: 100}
+//         callback(nilai)
+//     },1000)
+// }
+
+// function tampilkanData(nilai){
+//     console.info(`User ID: ${nilai.userId} Nilai: ${nilai.nilai}`)
+// }
+
+// ambilDataUser(function(user){
+//     console.info("User ditemukan:",user);
+//     ambilNilaiUser(user, function(nilai){
+//         tampilkanData(nilai)
+//     })
+// })
+
+// 🧪 Latihan Callback #4 - Filter dan Laporan Nilai
+
+// const siswa = [
+//     { nama: "Budi", nilai: 85 },
+//     { nama: "Ani", nilai: 92 },
+//     { nama: "Rudi", nilai: 77 },
+//     { nama: "Siti", nilai: 69 },
+//     { nama: "Thio", nilai: 95 },
+//   ];
+
+// function filterNilaiTinggi(data,callback){
+//    const hasil =  data.filter(nilai => nilai.nilai >= 85)
+//    callback(hasil)
+// }
+
+// function tampilkanNilai(nilai) {
+//     console.info("Siswa Nilai Tertinggi:");
+//     setTimeout(() => {
+//       console.info("Sebentar ya.. sedang mengambil Data.. 🚀");
+//       setTimeout(() => {
+//         nilai.forEach(e => {
+//           console.info(`- ${e.nama} (${e.nilai})`);
+//         });
+//         setTimeout(() => {
+//           console.info("Selesai!");
+//         }, 1000);
+//       }, 3000); // total jeda tetap sama
+//     }, 1000);
+//   }
+
+// filterNilaiTinggi(siswa,tampilkanNilai)
+
+// 🧪 Latihan Callback #5 - Proses Daftar Mahasiswa Baru
+
+function daftarMahasiswa(nama, callback) {
+    setTimeout(() => {
+        callback(nama)
+    },1000)
+}
+
+function verifikasiMahasiswa(mahasiswa,callback) {
+    setTimeout(() => {
+        if(mahasiswa.length === 0){
+            console.info("Mahasiswa tidak jadi Mendaftar ❌")
+        }else{
+            callback(mahasiswa)
+        }
+    },2000)
+}
+
+function tampilkanWelcome(mahasiswa){
+    console.info(`Selamat datang, ${mahasiswa} Pendafataranmu Berhasil ✅`)
+}
+
+daftarMahasiswa("thio",function(mahasiswa){
+    verifikasiMahasiswa(mahasiswa,function(verifikasiBerhasil){
+        tampilkanWelcome(verifikasiBerhasil)
+    })
 })
-
-// jumlahkan semua detik
-.reduce((acc,a) => acc + a);
-//  ubah formatnya jadi jam menit detik
-const jam = Math.floor(jsLanjut / 3600)
-jsLanjut = jsLanjut - jam * 3600;
-const menit = Math.floor(jsLanjut / 60)
-const detik = jsLanjut - menit * 60
-
-// simpan di DOM 
-const pDurasi = document.querySelector(".total-durasi")
-pDurasi.textContent = `${jam} Jam ${menit} Menit ${detik} Detik.`
-
-const pVideo = document.querySelector(".jumlah-video")
-const jumlahVideo = [...videos].filter(video => video.textContent.includes("JAVASCRIPT LANJUTAN")).length
-pVideo.textContent = `${jumlahVideo} Video.`
