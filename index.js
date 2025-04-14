@@ -748,3 +748,148 @@
 //     return `Data tidak di temukan`
 //   }
 // }
+
+
+// Higher Order Function
+
+// function selesai(){
+//     console.info("Selesai mengerjakan tugas")
+// }
+
+// function kerjakanTugas(mataKuliah,selesai){
+//     console.info(`Mulai mengerjakan ${mataKuliah}....`)
+//     setTimeout(() =>{
+//         selesai()
+//     },5000)
+// }
+
+
+// kerjakanTugas("Matematika",selesai) 
+
+// function filterEven(angka,callback){
+//     return angka.filter(callback)
+// }
+
+// const numbers = [1, 2, 3, 4, 5, 6];
+
+// const result = filterEven(numbers, function(n) {
+//   return n % 2 === 0;
+// });
+
+// console.log(result); // Output: [2, 4, 6]
+
+
+
+// filter
+
+
+// const nilai = angka.filter(a => a >= 3)
+// console.info(nilai)
+
+
+
+// const nilai = []
+
+// for(let i = 0; i < angka.length ; i++){
+    //     if(angka[i] >= 3){
+        //        nilai.push(angka[i])
+        //     }
+        // }
+        
+// console.info(nilai)
+
+
+// map
+// const nilai = angka.map(a => a * 2)
+// console.info(nilai)
+
+// reduce 
+// const nilai = angka.reduce((acc,nilai) => acc + nilai,4)
+// console.info(nilai)
+
+// method chaining
+// const angka = [-1,-4,7,4,8,3,8,10,3,-2];
+// const nilai = angka.filter(a => a >= 5).map(a => a * 3).reduce((acc,a) => acc + a)
+
+// console.info(nilai)
+
+// 💡 Latihan Kecil: Data Sederhana
+// Soal:
+// Gunakan filter untuk mendapatkan siswa yang nilainya di atas 75.
+
+// Gunakan map untuk mengambil array nama siswa saja.
+
+// Gunakan reduce untuk menghitung total semua nilai siswa.
+
+// const students = [
+//     { name: "Rani", score: 85 },
+//     { name: "Budi", score: 70 },
+//     { name: "Sinta", score: 95 },
+//     { name: "Doni", score: 65 },
+//     { name: "Eka", score: 80 },
+//   ];
+
+//   let dapatkanNilaiTinggi = students.filter(a => a.score >= 75)
+//   let mengambilNamaSiswa = students.map(a => a.name)
+//   let menjumlahkanNilai = students.map(a => a.score).reduce((acc,a) => acc + a)
+
+//   console.info(menjumlahkanNilai)
+
+// 🧪 Mini Project: Sistem Toko Sederhana
+
+// Tantangan:
+// Gunakan filter untuk menampilkan produk yang terjual minimal 1 unit.
+// Gunakan map untuk menampilkan nama produk + total pemasukan dari produk tsb (price * sold).
+// Gunakan reduce untuk menghitung total seluruh pemasukan toko.
+
+// const products = [
+//     { name: "Mouse", price: 150000, sold: 10 },
+//     { name: "Keyboard", price: 300000, sold: 5 },
+//     { name: "Monitor", price: 1200000, sold: 2 },
+//     { name: "USB Cable", price: 50000, sold: 20 },
+//     { name: "Webcam", price: 800000, sold: 0 },
+//   ];
+  
+//   const produkTerjual = products.filter(p => p.sold > 0).reduce((acc, p) => acc + p.sold, 0);
+//   const produkNamaTerjual = products.filter(a => a.sold > 0).map(a => a.name).join(", ")
+//   const penghasilan = products.map(a => a.price * a.sold).reduce((acc,a) => acc + a).toLocaleString("id")
+
+// console.info(`Produk Terjual sebanyak ${produkTerjual} unit
+// Nama Produk yang terjual: ${produkNamaTerjual}
+// penghasilan hari ini sebanyak Rp ${penghasilan}`)
+
+// Latihan Filter,Map,Reduce
+
+
+// ambil semua elemen video 
+const videos  = document.querySelectorAll("[data-duration]")
+
+// pilih hanya yang javascipt lanjutan
+
+let jsLanjut = [...videos].filter(video => video.textContent.includes("JAVASCRIPT LANJUTAN"))
+
+// ambil durasi masing masing video
+.map(item => item.dataset.duration)
+
+// ubah durasi menjadi Number, ubah menit menjadi detik
+.map(waktu => {
+    // "10:30" -> [10, 30] split
+    const parts = waktu.split(":").map(part => Number(part))
+    return (parts[0] * 60) + parts[1]
+})
+
+// jumlahkan semua detik
+.reduce((acc,a) => acc + a);
+//  ubah formatnya jadi jam menit detik
+const jam = Math.floor(jsLanjut / 3600)
+jsLanjut = jsLanjut - jam * 3600;
+const menit = Math.floor(jsLanjut / 60)
+const detik = jsLanjut - menit * 60
+
+// simpan di DOM 
+const pDurasi = document.querySelector(".total-durasi")
+pDurasi.textContent = `${jam} Jam ${menit} Menit ${detik} Detik.`
+
+const pVideo = document.querySelector(".jumlah-video")
+const jumlahVideo = [...videos].filter(video => video.textContent.includes("JAVASCRIPT LANJUTAN")).length
+pVideo.textContent = `${jumlahVideo} Video.`
