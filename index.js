@@ -1027,28 +1027,116 @@
 
 // 🧪 Latihan Callback #5 - Proses Daftar Mahasiswa Baru
 
-function daftarMahasiswa(nama, callback) {
-    setTimeout(() => {
-        callback(nama)
-    },1000)
-}
+// function daftarMahasiswa(nama, callback) {
+//     setTimeout(() => {
+//         callback(nama)
+//     },1000)
+// }
 
-function verifikasiMahasiswa(mahasiswa,callback) {
-    setTimeout(() => {
-        if(mahasiswa.length === 0){
-            console.info("Mahasiswa tidak jadi Mendaftar ❌")
-        }else{
-            callback(mahasiswa)
-        }
-    },2000)
-}
+// function verifikasiMahasiswa(mahasiswa,callback) {
+//     setTimeout(() => {
+//         if(mahasiswa.length === 0){
+//             console.info("Mahasiswa tidak jadi Mendaftar ❌")
+//         }else{
+//             callback(mahasiswa)
+//         }
+//     },2000)
+// }
 
-function tampilkanWelcome(mahasiswa){
-    console.info(`Selamat datang, ${mahasiswa} Pendafataranmu Berhasil ✅`)
-}
+// function tampilkanWelcome(mahasiswa){
+//     console.info(`Selamat datang, ${mahasiswa} Pendafataranmu Berhasil ✅`)
+// }
 
-daftarMahasiswa("thio",function(mahasiswa){
-    verifikasiMahasiswa(mahasiswa,function(verifikasiBerhasil){
-        tampilkanWelcome(verifikasiBerhasil)
-    })
+// daftarMahasiswa("thio",function(mahasiswa){
+//     verifikasiMahasiswa(mahasiswa,function(verifikasiBerhasil){
+//         tampilkanWelcome(verifikasiBerhasil)
+//     })
+// })
+
+// function halo(nama){
+//     alert(`halo ${nama}`)
+// }
+
+// function tampilkanPesan(callback){
+//     const nama = prompt("Masukan Nama Anda")
+//     callback(nama)
+// }
+
+// tampilkanPesan(nama => alert(`halo ${nama}`))
+
+// const mhs = [
+//     {
+//         nama: "Thio",
+//         kelas: "XII",
+//         jurusan: "Rekayasa Perangkat Lunak"
+//     },
+//     {
+//         nama: "karim",
+//         kelas: "XII",
+//         jurusan: "Rekayasa Perangkat Lunak"
+//     },
+//     {
+//         nama: "diko",
+//         kelas: "XII",
+//         jurusan: "Rekayasa Perangkat Lunak"
+//     },
+//     {
+//         nama: "kian",
+//         kelas: "XII",
+//         jurusan: "Rekayasa Perangkat Lunak"
+//     },
+// ]
+
+// console.info("mulai")
+// mhs.forEach(m => {
+//     setTimeout(()=>{
+
+//         console.info(m.nama)
+//     },3000)
+// })
+// console.info("selesai")
+
+// asynchronous callback
+
+// Vanilla Javascript
+// function getDataMahasiswa(url,success,error){
+//     let xhr = new XMLHttpRequest()
+
+//     xhr.onreadystatechange = function(){
+//         if(xhr.readyState === 4){
+//             if(xhr.status === 200){
+//                 success(xhr.response)
+//             }else if(xhr.status === 404){
+//                 error()
+//             }
+//         }
+//     }
+
+//     xhr.open('get', url);
+//     xhr.send()
+// }
+
+// console.info("mulai")
+// getDataMahasiswa('mahasiswa.json',result => {
+//     const mhs = JSON.parse(result)
+    
+//     mhs.forEach(m => console.info(m.nama))
+// },() => {
+    
+// })
+// console.info("selesai")
+
+
+//  Jquery
+
+console.info("mulai")
+$.ajax({
+    url: 'mahasiswa.json',
+    success: (result) => {
+        result.forEach(m => console.info(m.nama))
+    },
+    error: (e) => {
+        console.info(e.responseText)
+    }
 })
+console.info("selesai")
