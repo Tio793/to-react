@@ -1142,26 +1142,224 @@
 // console.info("selesai")
 
 
-const box = document.querySelector(".siswa")
+// const box = document.querySelector(".siswa")
 
 
-$.ajax({
-    url: "siswa.json",
-    success: (dataSiswa) => {
-        let siswa = dataSiswa
-        siswa.map(siswa => {
-            box.innerHTML += `
-            <div class="bg-slate-100 shadow-xl w-76 p-3 rounded-sm h-50">
-            <h1 class="flex justify-center font-bold text-lg">Kartu Tanda Pengenal</h1>
-            <div class="mt-10">Nama : ${siswa.nama}</div>
-            <div>Kelas : ${siswa.kelas}</div>
-            <div>Jurusan : ${siswa.jurusan}</div>
-      </div>
-            `
-        })
-    },
-    error: e => {
-        console.info(e.responseText)
-    }
-    
-})
+// $.ajax({
+//     url: "siswa.json",
+//     success: (dataSiswa) => {
+//         let siswa = dataSiswa
+//         siswa.map(siswa => {
+//             box.innerHTML += `
+//             <div class="bg-slate-100 shadow-xl w-76 p-3 rounded-sm h-50">
+//             <h1 class="flex justify-center font-bold text-lg">Kartu Tanda Pengenal</h1>
+//             <div class="mt-10">Nama : ${siswa.nama}</div>
+//             <div>Kelas : ${siswa.kelas}</div>
+//             <div>Jurusan : ${siswa.jurusan}</div>
+//       </div>
+//             `
+//         })
+//     },
+//     error: e => {
+//         console.info(e.responseText)
+//     }
+// })
+
+// $.ajax({
+//     url: "http://www.omdbapi.com/?apikey=5e92caec&s=avenger",
+//     success: (result) => {
+//         console.info(result)
+//     },
+//     error: e => {
+//         console.info(e.responseText)
+//     }
+// })
+
+// Promise 
+// let ditepati = false;
+// const janji1 = new Promise((resolve,reject) =>{
+//     if( ditepati){
+//         resolve("janji di tepati")
+//     }else {
+//         reject("ingkar janji")
+//     }
+// })
+
+// janji1.then(respon => console.info("oke : " + respon)).catch(respon => console.info("Not Oke : " + respon))
+
+// let ditepati = true;
+// const janji2 = new Promise((resolv,reject) => {
+//     if(ditepati){
+//         setTimeout(() => {
+//             resolv("Janji di Tepati")
+//         },4000)
+//     }else {
+//         setTimeout(() => {
+//             reject("Ingkar Janji")
+//         },2000)
+//     }
+// })
+
+// console.info("mulai")
+// console.info(janji2.then(respon => console.info(respon)).finally(() => console.info("selesai menunggu")))
+// console.info("selesai")
+
+// promise.all
+
+// const film = new Promise( resolve => {
+//     setTimeout(() => {
+//         resolve([{
+//             judul: 'avanger',
+//             sutradara: 'sandhika',
+//             pemeran: 'sandhika aja'
+//         }])
+//     },1000)
+// })
+
+// const cuaca = new Promise( resolve => {
+//     setTimeout(() => {
+//         resolve([{
+//             kota: 'bandung',
+//             temp: '27',
+//             kondisi: 'cerah aja'
+//         }])
+//     },500)
+// })
+
+// // film.then(respon => console.info(respon))
+// // cuaca.then(respon => console.info(respon))
+
+// Promise.all([film,cuaca]).then(respon => {
+//     const [film,cuaca] = respon;
+//     console.info(film)
+//     console.info(cuaca)
+// })
+
+// 💡 Latihan 1: Cek Umur
+
+// function cekUmur(umur) {
+//     const validasi = new Promise((resolve,reject) => {
+//         if(umur >= 18){
+//             resolve("Sudah Dewasa")
+//         }else{
+//             reject("Masih di bawah umur")
+//         }
+//     })
+//     return validasi
+// }
+
+// cekUmur(20).then(respon => console.info(respon)).catch(respon => console.info(respon))
+
+// function loadData(){
+//     return new Promise((resolve,reject) => {
+//         setTimeout(() => {
+//             resolve("Data Berhasil dimuat")
+//         },2000)
+//     })
+// }
+
+// loadData().then(respon => console.info(respon))
+
+// 💡 Latihan 3: Kalkulasi dengan Promise
+
+// function bagi(a,b){
+//     return new Promise((resolve,reject) => {
+//         if(b !== 0){
+//             console.info("sedang di hitung...")
+//             setTimeout(() => {
+//                 resolve(a / b)
+//             },3000)
+//         }else if(b === 0){
+//             console.info("sedang di hitung...")
+//             setTimeout(() => {
+//                 reject(`tidak bisa di bagi dengan nol`)
+//             },3000)
+//         }
+//     })
+// }
+
+// bagi(10,0).then(respon => console.info(`Hasil: ${respon}`)).catch(respon => console.info(`Error : ${respon}`))
+
+// 💡 Latihan 4: Promise Berantai (Chaining)
+// function step1(){
+//     return new Promise(resolv => {
+//         setTimeout(() => {
+//             resolv("Langkah 1 selesai")
+//         },1000)
+//     })
+// }
+// function step2(){
+//     return new Promise(resolv => {
+//         setTimeout(() => {
+//             resolv("Langkah 2 selesai")
+//         },2000)
+//     })
+// }
+// function step3(){
+//     return new Promise(resolv => {
+//         setTimeout(() => {
+//             resolv("Langkah 3 selesai")
+//         },3000)
+//     })
+// }
+
+// // step1().then(respon => console.info(respon))
+// // step2().then(respon => console.info(respon))
+// // step3().then(respon => console.info(respon))
+
+// step1().then(respon1 => {
+//     console.info(respon1)
+//     return step2()
+// }).then(respon2 => {
+//     console.info(respon2)
+//     return step3()
+// }).then(respon3 => console.info(respon3))
+
+// 🧪 Latihan: Registrasi Bertahap
+
+function cekUsername(username){
+    return new Promise((resolve,reject) => {
+        if(username.length < 4){
+            reject("Username terlalu pendek")
+        }
+        else if(username === "admin"){
+            reject("Username tidak tersedia")
+        }else{
+            resolve("Username Tersedia")
+        }
+    })
+}
+
+function cekPassword(password){
+    return new Promise((resolve,reject) => {
+        if(password.length < 6){
+            reject("Password terlalu pendek")
+        }else{
+            resolve("Password valid")
+        }
+    })
+}
+
+function simpanAkun(data){
+    return new Promise((resolv,reject) => {
+        console.info("Menyimpan akun...")
+        setTimeout(() => {
+            resolv("Akun berhasil disimpan 🚀")
+        },2000)
+    })
+}
+
+const user =  {
+    username: "karim",
+    password: "thiokariem"
+}
+
+cekUsername(user.username)
+.then(respon => {
+    console.info(respon)
+    return cekPassword(user.password)
+}).then(respon => {
+    console.info(respon)
+    return simpanAkun(user)
+}).then(respon => console.info(respon))
+.catch(respon => console.info(`Error : ${respon}`))
