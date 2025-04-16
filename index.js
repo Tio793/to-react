@@ -1129,14 +1129,39 @@
 
 //  Jquery
 
-console.info("mulai")
+// console.info("mulai")
+// $.ajax({
+//     url: 'mahasiswa.json',
+//     success: (result) => {
+//         result.forEach(m => console.info(m.nama))
+//     },
+//     error: (e) => {
+//         console.info(e.responseText)
+//     }
+// })
+// console.info("selesai")
+
+
+const box = document.querySelector(".siswa")
+
+
 $.ajax({
-    url: 'mahasiswa.json',
-    success: (result) => {
-        result.forEach(m => console.info(m.nama))
+    url: "siswa.json",
+    success: (dataSiswa) => {
+        let siswa = dataSiswa
+        siswa.map(siswa => {
+            box.innerHTML += `
+            <div class="bg-slate-100 shadow-xl w-76 p-3 rounded-sm h-50">
+            <h1 class="flex justify-center font-bold text-lg">Kartu Tanda Pengenal</h1>
+            <div class="mt-10">Nama : ${siswa.nama}</div>
+            <div>Kelas : ${siswa.kelas}</div>
+            <div>Jurusan : ${siswa.jurusan}</div>
+      </div>
+            `
+        })
     },
-    error: (e) => {
+    error: e => {
         console.info(e.responseText)
     }
+    
 })
-console.info("selesai")

@@ -1,0 +1,32 @@
+[
+    {
+        "nama": "thio",
+        "kelas": "XII",
+        "jurusan": "Rekayasa Perangkat Lunak"
+    },
+    {
+        "nama": "fahrul",
+        "kelas": "X",
+        "jurusan": "Teknik Komputer dan Jaringan"
+    },
+    {
+        "nama": "dyah",
+        "kelas": "XII",
+        "jurusan": "Perkantoran"
+    },
+    {
+        "nama": "Neila",
+        "kelas": "XII",
+        "jurusan": "Asisten Keperawatan"
+    },
+    {
+        "nama": "davi",
+        "kelas": "XII",
+        "jurusan": "multimedia"
+    },
+    {
+        "nama": "tegar",
+        "kelas": "XII",
+        "jurusan": "akutansi"
+    }
+]
