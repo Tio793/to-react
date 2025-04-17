@@ -749,7 +749,6 @@
 //   }
 // }
 
-
 // Higher Order Function
 
 // function selesai(){
@@ -763,8 +762,7 @@
 //     },5000)
 // }
 
-
-// kerjakanTugas("Matematika",selesai) 
+// kerjakanTugas("Matematika",selesai)
 
 // function filterEven(angka,callback){
 //     return angka.filter(callback)
@@ -778,32 +776,26 @@
 
 // console.log(result); // Output: [2, 4, 6]
 
-
-
 // filter
-
 
 // const nilai = angka.filter(a => a >= 3)
 // console.info(nilai)
 
-
-
 // const nilai = []
 
 // for(let i = 0; i < angka.length ; i++){
-    //     if(angka[i] >= 3){
-        //        nilai.push(angka[i])
-        //     }
-        // }
-        
-// console.info(nilai)
+//     if(angka[i] >= 3){
+//        nilai.push(angka[i])
+//     }
+// }
 
+// console.info(nilai)
 
 // map
 // const nilai = angka.map(a => a * 2)
 // console.info(nilai)
 
-// reduce 
+// reduce
 // const nilai = angka.reduce((acc,nilai) => acc + nilai,4)
 // console.info(nilai)
 
@@ -849,7 +841,7 @@
 //     { name: "USB Cable", price: 50000, sold: 20 },
 //     { name: "Webcam", price: 800000, sold: 0 },
 //   ];
-  
+
 //   const produkTerjual = products.filter(p => p.sold > 0).reduce((acc, p) => acc + p.sold, 0);
 //   const produkNamaTerjual = products.filter(a => a.sold > 0).map(a => a.name).join(", ")
 //   const penghasilan = products.map(a => a.price * a.sold).reduce((acc,a) => acc + a).toLocaleString("id")
@@ -860,8 +852,7 @@
 
 // Latihan Filter,Map,Reduce
 
-
-// ambil semua elemen video 
+// ambil semua elemen video
 // const videos  = document.querySelectorAll("[data-duration]")
 
 // // pilih hanya yang javascipt lanjutan
@@ -886,7 +877,7 @@
 // const menit = Math.floor(jsLanjut / 60)
 // const detik = jsLanjut - menit * 60
 
-// // simpan di DOM 
+// // simpan di DOM
 // const pDurasi = document.querySelector(".total-durasi")
 // pDurasi.textContent = `${jam} Jam ${menit} Menit ${detik} Detik.`
 
@@ -1119,13 +1110,12 @@
 // console.info("mulai")
 // getDataMahasiswa('mahasiswa.json',result => {
 //     const mhs = JSON.parse(result)
-    
+
 //     mhs.forEach(m => console.info(m.nama))
 // },() => {
-    
+
 // })
 // console.info("selesai")
-
 
 //  Jquery
 
@@ -1141,9 +1131,7 @@
 // })
 // console.info("selesai")
 
-
 // const box = document.querySelector(".siswa")
-
 
 // $.ajax({
 //     url: "siswa.json",
@@ -1175,7 +1163,7 @@
 //     }
 // })
 
-// Promise 
+// Promise
 // let ditepati = false;
 // const janji1 = new Promise((resolve,reject) =>{
 //     if( ditepati){
@@ -1317,49 +1305,113 @@
 
 // 🧪 Latihan: Registrasi Bertahap
 
-function cekUsername(username){
-    return new Promise((resolve,reject) => {
-        if(username.length < 4){
-            reject("Username terlalu pendek")
-        }
-        else if(username === "admin"){
-            reject("Username tidak tersedia")
-        }else{
-            resolve("Username Tersedia")
-        }
-    })
+// function cekUsername(username){
+//     return new Promise((resolve,reject) => {
+//         if(username.length < 4){
+//             reject("Username terlalu pendek")
+//         }
+//         else if(username === "admin"){
+//             reject("Username tidak tersedia")
+//         }else{
+//             resolve("Username Tersedia")
+//         }
+//     })
+// }
+
+// function cekPassword(password){
+//     return new Promise((resolve,reject) => {
+//         if(password.length < 6){
+//             reject("Password terlalu pendek")
+//         }else{
+//             resolve("Password valid")
+//         }
+//     })
+// }
+
+// function simpanAkun(data){
+//     return new Promise((resolv,reject) => {
+//         console.info("Menyimpan akun...")
+//         setTimeout(() => {
+//             resolv("Akun berhasil disimpan 🚀")
+//         },2000)
+//     })
+// }
+
+// const user =  {
+//     username: "karim",
+//     password: "thiokariem"
+// }
+
+// cekUsername(user.username)
+// .then(respon => {
+//     console.info(respon)
+//     return cekPassword(user.password)
+// }).then(respon => {
+//     console.info(respon)
+//     return simpanAkun(user)
+// }).then(respon => console.info(respon))
+// .catch(respon => console.info(`Error : ${respon}`))
+
+$(".search-button").on("click", function () {
+  $.ajax({
+    url:
+      "http://www.omdbapi.com/?apikey=5e92caec&s=" + $(".input-keyword").val(),
+    success: (result) => {
+      const movies = result.Search;
+      movies.map((movie) => {
+        showMovie(movie);
+        // ketika tombol detail di klik
+        movieDetail();
+      });
+    },
+    error: (e) => console.info(e.responseText),
+  });
+});
+
+function showMovie(movie) {
+  return (document.querySelector(".baris").innerHTML += `
+    <div class="col-md-4 my-3">
+<div class="card">
+<img src="${movie.Poster}" class="card-img-top">
+<div class="card-body">
+  <h5 class="card-title">${movie.Title}</h5>
+  <h6 class="card-subtitle mb-2 text-body-secondary">${movie.Year}</h6>
+  <a href="#" class="btn btn-primary modal-detail-button" data-bs-toggle="modal" data-bs-target="#movieDetailModal" data-imdbid="${movie.imdbID}">Show detail</a>
+</div>
+</div>
+</div>
+    `);
 }
 
-function cekPassword(password){
-    return new Promise((resolve,reject) => {
-        if(password.length < 6){
-            reject("Password terlalu pendek")
-        }else{
-            resolve("Password valid")
-        }
-    })
+function movieDetail() {
+  return document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("modal-detail-button")) {
+      const imdb = e.target.dataset.imdbid;
+      $.ajax({
+        url: "http://www.omdbapi.com/?apikey=5e92caec&i=" + imdb,
+        success: (m) => {
+          const movieDetail = ` 
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-3">
+                    <img src="${m.Poster}" class="img-fluid">
+                  </div>
+                  <div class="col-md">
+                    <ul class="list-group">
+                      <li class="list-group-item"><h4>${m.Title} (${m.Year})</h4></li>
+                      <li class="list-group-item"><strong>Director : </strong>${m.Director}</li>
+                      <li class="list-group-item"><strong>Actors : </strong>${m.Actors}</li>
+                      <li class="list-group-item"><strong>Genre : </strong>${m.Genre}</li>
+                      <li class="list-group-item"><strong>Writer : </strong>${m.Writer}</li>
+                      <li class="list-group-item"><strong>Plot :</strong><br>${m.Plot}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>`;
+          document.querySelector(".modal-body").innerHTML = movieDetail;
+        },
+        error: (e) => console.info(e.responseText),
+      });
+    }
+  });
 }
-
-function simpanAkun(data){
-    return new Promise((resolv,reject) => {
-        console.info("Menyimpan akun...")
-        setTimeout(() => {
-            resolv("Akun berhasil disimpan 🚀")
-        },2000)
-    })
-}
-
-const user =  {
-    username: "karim",
-    password: "thiokariem"
-}
-
-cekUsername(user.username)
-.then(respon => {
-    console.info(respon)
-    return cekPassword(user.password)
-}).then(respon => {
-    console.info(respon)
-    return simpanAkun(user)
-}).then(respon => console.info(respon))
-.catch(respon => console.info(`Error : ${respon}`))
