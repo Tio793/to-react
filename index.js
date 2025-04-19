@@ -1352,66 +1352,143 @@
 // }).then(respon => console.info(respon))
 // .catch(respon => console.info(`Error : ${respon}`))
 
-$(".search-button").on("click", function () {
-  $.ajax({
-    url:
-      "http://www.omdbapi.com/?apikey=5e92caec&s=" + $(".input-keyword").val(),
-    success: (result) => {
-      const movies = result.Search;
-      movies.map((movie) => {
-        showMovie(movie);
-        // ketika tombol detail di klik
-        movieDetail();
-      });
-    },
-    error: (e) => console.info(e.responseText),
-  });
-});
+// $(".search-button").on("click", function () {
+//   $.ajax({
+//     url:
+//       "http://www.omdbapi.com/?apikey=5e92caec&s=" + $(".input-keyword").val(),
+//     success: (result) => {
+//       const movies = result.Search;
+//       movies.map((movie) => {
+//         showMovie(movie);
+//         // ketika tombol detail di klik
+//         movieDetail();
+//       });
+//     },
+//     error: (e) => console.info(e.responseText),
+//   });
+// });
 
-function showMovie(movie) {
-  return (document.querySelector(".baris").innerHTML += `
-    <div class="col-md-4 my-3">
-<div class="card">
-<img src="${movie.Poster}" class="card-img-top">
-<div class="card-body">
-  <h5 class="card-title">${movie.Title}</h5>
-  <h6 class="card-subtitle mb-2 text-body-secondary">${movie.Year}</h6>
-  <a href="#" class="btn btn-primary modal-detail-button" data-bs-toggle="modal" data-bs-target="#movieDetailModal" data-imdbid="${movie.imdbID}">Show detail</a>
-</div>
-</div>
-</div>
-    `);
-}
 
-function movieDetail() {
-  return document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("modal-detail-button")) {
-      const imdb = e.target.dataset.imdbid;
-      $.ajax({
-        url: "http://www.omdbapi.com/?apikey=5e92caec&i=" + imdb,
-        success: (m) => {
-          const movieDetail = ` 
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-3">
-                    <img src="${m.Poster}" class="img-fluid">
-                  </div>
-                  <div class="col-md">
-                    <ul class="list-group">
-                      <li class="list-group-item"><h4>${m.Title} (${m.Year})</h4></li>
-                      <li class="list-group-item"><strong>Director : </strong>${m.Director}</li>
-                      <li class="list-group-item"><strong>Actors : </strong>${m.Actors}</li>
-                      <li class="list-group-item"><strong>Genre : </strong>${m.Genre}</li>
-                      <li class="list-group-item"><strong>Writer : </strong>${m.Writer}</li>
-                      <li class="list-group-item"><strong>Plot :</strong><br>${m.Plot}</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>`;
-          document.querySelector(".modal-body").innerHTML = movieDetail;
-        },
-        error: (e) => console.info(e.responseText),
-      });
-    }
-  });
-}
+// fetch
+// const searchButton = document.querySelector(".search-button")
+// searchButton.addEventListener("click",function(){
+//     const inputKeyword = document.querySelector(".input-keyword")
+//     fetch("http://www.omdbapi.com/?apikey=5e92caec&s=" + inputKeyword.value)
+//     .then(respon => respon.json()).then(respon => {
+//         const movies = respon.Search;
+//         let cards = '';
+//         movies.forEach(movie => cards += showMovie(movie))
+//         const movieContainer = document.querySelector(".baris")
+//         movieContainer.innerHTML = cards;
+
+//         // ketika tombol detail di click
+
+//         const modalDetailButton = document.querySelectorAll(".modal-detail-button")
+
+//         modalDetailButton.forEach(btn => {
+//             btn.addEventListener("click",function(){
+//                 const imdbid = this.dataset.imdbid;
+//                 fetch("http://www.omdbapi.com/?apikey=5e92caec&i=" + imdbid)
+//                 .then(respon => respon.json()).then(result => {
+//                     const movieDetil = movieDetail(result)
+//                     const modalBody = document.querySelector(".modal-body")
+//                     modalBody.innerHTML = movieDetil
+//                 })
+//             })
+//         })
+//     })
+// })
+
+
+// function showMovie(movie) {
+//   return (document.querySelector(".baris").innerHTML += `
+//     <div class="col-md-4 my-3">
+// <div class="card">
+// <img src="${movie.Poster}" class="card-img-top">
+// <div class="card-body">
+//   <h5 class="card-title">${movie.Title}</h5>
+//   <h6 class="card-subtitle mb-2 text-body-secondary">${movie.Year}</h6>
+//   <a href="#" class="btn btn-primary modal-detail-button" data-bs-toggle="modal" data-bs-target="#movieDetailModal" data-imdbid="${movie.imdbID}">Show detail</a>
+// </div>
+// </div>
+// </div>
+//     `);
+// }
+
+// function movieDetail() {
+//   return document.addEventListener("click", function (e) {
+//     if (e.target.classList.contains("modal-detail-button")) {
+//       const imdb = e.target.dataset.imdbid;
+//       $.ajax({
+//         url: "http://www.omdbapi.com/?apikey=5e92caec&i=" + imdb,
+//         success: (m) => {
+//           const dataFilm = data;
+//           const movieDetail = `
+//               <div class="container-fluid">
+//                 <div class="row">
+//                   <div class="col-md-3">
+//                     <img src="${data.Poster}" class="img-fluid">
+//                   </div>
+//                   <div class="col-md">
+//                     <ul class="list-group">
+//                       <li class="list-group-item"><h4>${data.Title} (${data.Year})</h4></li>
+//                       <li class="list-group-item"><strong>Director : </strong>${data.Director}</li>
+//                       <li class="list-group-item"><strong>Actors : </strong>${data.Actors}</li>
+//                       <li class="list-group-item"><strong>Genre : </strong>${data.Genre}</li>
+//                       <li class="list-group-item"><strong>Writer : </strong>${data.Writer}</li>
+//                       <li class="list-group-item"><strong>Plot :</strong><br>${data.Plot}</li>
+//                     </ul>
+//                   </div>
+//                 </div>
+//               </div>`;
+//           document.querySelector(".modal-body").innerHTML = movieDetail;
+//         },
+//         error: (e) => console.info(e.responseText),
+//       });
+//     }
+//   });
+// }
+
+//  💡 Mini Project: Daftar Pengguna
+const btnSearch = document.getElementById("btnSearch")
+document.getElementById("btnRefresh").disabled = true;
+btnSearch.addEventListener('click',function(){
+    cariUser()
+})
+ 
+function cariUser() {
+    const keyword = document.getElementById("search").value.toLowerCase();
+    const hasilBox = document.querySelector(".user-box");
+    hasilBox.innerHTML = "";
+
+  
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res => res.json())
+      .then(users => {
+        const ditemukan = users.filter(user => user.name.toLowerCase().includes(keyword))
+        if (ditemukan.length > 0) {
+          hasilBox.innerHTML = `<p class="">Mencari Data...</p>`;
+          setTimeout(() => {
+            hasilBox.innerHTML = `<p class="">Data di temukan!</p>`;
+          },700)
+          setTimeout(() => {
+            hasilBox.innerHTML = ditemukan.map(user => `
+                 <div class="w-[400px] h-80 bg-slate-100 rounded-lg shadow-lg p-3 my-5">
+                 <h1 class="font-bold text-2xl text-center mt-5">Profile Pengguna</h1>
+                 <p class="text-xl mt-10"><strong>Nama :</strong> ${user.name}</p>
+                 <p class="text-xl my-5"><strong>Email :</strong> ${user.email}</p>
+                 <p class="text-xl my-5"><strong>City :</strong> ${user.address.city}</p>
+                 </div>
+                 `).join("");
+
+                 document.getElementById("btnRefresh").disabled = false;
+          },3000)
+        } else {
+          hasilBox.innerHTML = `<p class="text-slate-800">User tidak ditemukan.</p>`;
+        }}).catch(err => {
+          const tampilanError = document.querySelector(".err-base");
+          document.querySelector("#btnRefresh").classList.add("hidden");
+          tampilanError.innerHTML = `<h1 class="text-slate-800 text-4xl">Error 404 Not Found!</h1>`
+        });
+  }
+
