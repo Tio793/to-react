@@ -1450,45 +1450,172 @@
 // }
 
 //  💡 Mini Project: Daftar Pengguna
-const btnSearch = document.getElementById("btnSearch")
-document.getElementById("btnRefresh").disabled = true;
-btnSearch.addEventListener('click',function(){
-    cariUser()
-})
+// const btnSearch = document.getElementById("btnSearch")
+// document.getElementById("btnRefresh").disabled = true;
+// btnSearch.addEventListener('click',function(){
+//     cariUser()
+// })
  
-function cariUser() {
-    const keyword = document.getElementById("search").value.toLowerCase();
-    const hasilBox = document.querySelector(".user-box");
-    hasilBox.innerHTML = "";
+// function cariUser() {
+//     const keyword = document.getElementById("search").value.toLowerCase();
+//     const hasilBox = document.querySelector(".user-box");
+//     hasilBox.innerHTML = "";
 
   
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then(res => res.json())
-      .then(users => {
-        const ditemukan = users.filter(user => user.name.toLowerCase().includes(keyword))
-        if (ditemukan.length > 0) {
-          hasilBox.innerHTML = `<p class="">Mencari Data...</p>`;
-          setTimeout(() => {
-            hasilBox.innerHTML = `<p class="">Data di temukan!</p>`;
-          },700)
-          setTimeout(() => {
-            hasilBox.innerHTML = ditemukan.map(user => `
-                 <div class="w-[400px] h-80 bg-slate-100 rounded-lg shadow-lg p-3 my-5">
-                 <h1 class="font-bold text-2xl text-center mt-5">Profile Pengguna</h1>
-                 <p class="text-xl mt-10"><strong>Nama :</strong> ${user.name}</p>
-                 <p class="text-xl my-5"><strong>Email :</strong> ${user.email}</p>
-                 <p class="text-xl my-5"><strong>City :</strong> ${user.address.city}</p>
-                 </div>
-                 `).join("");
+//     fetch("https://jsonplaceholder.typicode.com/users")
+//       .then(res => res.json())
+//       .then(users => {
+//         const ditemukan = users.filter(user => user.name.toLowerCase().includes(keyword))
+//         if (ditemukan.length > 0) {
+//           hasilBox.innerHTML = `<p class="">Mencari Data...</p>`;
+//           setTimeout(() => {
+//             hasilBox.innerHTML = `<p class="">Data di temukan!</p>`;
+//           },700)
+//           setTimeout(() => {
+//             hasilBox.innerHTML = ditemukan.map(user => `
+//                  <div class="w-[400px] h-80 bg-slate-100 rounded-lg shadow-lg p-3 my-5">
+//                  <h1 class="font-bold text-2xl text-center mt-5">Profile Pengguna</h1>
+//                  <p class="text-xl mt-10"><strong>Nama :</strong> ${user.name}</p>
+//                  <p class="text-xl my-5"><strong>Email :</strong> ${user.email}</p>
+//                  <p class="text-xl my-5"><strong>City :</strong> ${user.address.city}</p>
+//                  </div>
+//                  `).join("");
 
-                 document.getElementById("btnRefresh").disabled = false;
-          },3000)
-        } else {
-          hasilBox.innerHTML = `<p class="text-slate-800">User tidak ditemukan.</p>`;
-        }}).catch(err => {
-          const tampilanError = document.querySelector(".err-base");
-          document.querySelector("#btnRefresh").classList.add("hidden");
-          tampilanError.innerHTML = `<h1 class="text-slate-800 text-4xl">Error 404 Not Found!</h1>`
-        });
-  }
+//                  document.getElementById("btnRefresh").disabled = false;
+//           },3000)
+//         } else {
+//           hasilBox.innerHTML = `<p class="text-slate-800">User tidak ditemukan.</p>`;
+//         }}).catch(err => {
+//           const tampilanError = document.querySelector(".err-base");
+//           document.querySelector("#btnRefresh").classList.add("hidden");
+//           tampilanError.innerHTML = `<h1 class="text-slate-800 text-4xl">Error 404 Not Found!</h1>`
+//         });
+//   }
+
+// const input = document.getElementById("input");
+// const button = document.getElementById("btnTrigger");
+
+// function trigger() {
+//   alert(`Anda telah mengetik : ${input.value}`);
+// }
+
+
+// const coba = new Promise(resolve => {
+//     setTimeout(() => {
+//     resolve("selesai")
+//     },2000)
+// })
+// console.info(coba)
+// coba.then(() => console.info(coba))
+
+// function cobaPromise(){
+//     return new Promise((resolve,reject) => {
+//         const waktu = 5000;
+//         if(waktu < 5000){
+//             setTimeout(() => {
+//             resolve("selesai")
+//             },waktu)
+//         }else{
+//             reject("gagal")
+//         }
+
+//     })
+// }
+
+// const coba = cobaPromise();
+// // console.info(coba)
+// coba.then(() => console.info(coba)).catch(() => console.info(coba))
+
+// async function cobaAsync(){
+//     try{
+//         const coba = await cobaPromise()
+//         console.info(coba)
+//     } catch (err){
+//         console.info(err)
+//     }
+// }
+
+// cobaAsync()
+
+// // 🔁 Latihan Dasar
+
+// function getData(){
+//     return new Promise(resolve => {
+//         setTimeout(() => {
+//             resolve("selesai")
+//         },2000)
+//     })
+// }
+
+// // menggunakan then biasa
+// getData().then(respon => console.info(respon))
+
+// // Tugasmu: buat fungsi async untuk memanggil getData dan menampilkan hasilnya
+// (async function asing(){
+//     const data = await getData()
+//     console.info(data)
+// })()
+
+// function fetchError(){
+//     return new Promise(reject => {
+//         setTimeout(() => {
+//             reject("Terjadi Kesalahan")
+//         },1500)
+//     })
+// }
+
+// // Tugasmu: buat fungsi async yang menggunakan try/catch untuk menangani error dari fetchError
+// async function asing(){
+//     try{
+//         const data = await fetchError()
+//         console.info(data)
+//     }catch(error){
+//         console.error(error)
+//     }
+// }
+// asing()
+
+//  📦 Latihan Menengah (Simulasi Data)
+
+// function getUser() {
+//     return new Promise(resolve => setTimeout(() => resolve("User"), 1000));
+//   }
+//   function getProfile() {
+//     return new Promise(resolve => setTimeout(() => resolve("Profile"), 1000));
+//   }
+//   function getActivity() {
+//     return new Promise(resolve => setTimeout(() => resolve("Activity"), 1000));
+//   }
+  
+//   // Tugasmu: buat satu fungsi async untuk memanggil ketiga fungsi ini secara berurutan dan cetak hasilnya
+
+//   async function asing() {
+//     try{
+//         const user = await getUser()
+//         const profile = await getProfile()
+//         const activity = await getActivity()
+//         console.info(user)
+//         console.info(profile)
+//         console.info(activity)
+//     }catch(error){
+//         console.error(error)
+//     }
+//   }
+
+//   asing()
+
+// 🚀 Mini Project Kecil
+// async function getUsers() {
+//     try{
+//         const response = await fetch("https://jsonplaceholder.typicode.com/users");
+//         const data = await response.json();
+//     setTimeout(() => {
+//   console.log(data);
+//     },1000)
+//     }catch(error){
+//         console.info(error)
+//     }
+//   }
+
+//   getUsers()
 
