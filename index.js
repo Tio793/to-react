@@ -1631,53 +1631,157 @@
 //     }
 // })();
 
-const apiKey = "5e92caec";
-const filmContainer = document.getElementById("content");
-const info = document.getElementById("info");
-let daftarFilm = [];
+// web mencari film
 
-async function getMovie(){
-    const keyWord = document.getElementById("input").value.toLowerCase()
-    // if(!keyWord) return alert("Masukan Judul Film!")
-    try{
-        const response = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${keyWord}`) 
-        const data = await response.json()
-        if(!response.ok){
-            daftarFilm = [];
-            throw new Error(`Error : ${response.statusText}`)
-        }
-        daftarFilm = data.Search
-        boxContent(daftarFilm) // tampilkan filmm
-        info.textContent =""
-    }catch(err){
-        console.error(err)
-    }
-}
+// const apiKey = "5e92caec";
+// const filmContainer = document.getElementById("content");
+// const info = document.getElementById("info");
+// let daftarFilm = [];
 
-getMovie()
+// async function getMovie(){
+//     const keyWord = document.getElementById("input").value.toLowerCase()
+//     // if(!keyWord) return alert("Masukan Judul Film!")
+//     try{
+//         const response = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${keyWord}`) 
+//         const data = await response.json()
+//         if(!response.ok){
+//             daftarFilm = [];
+//             throw new Error(`Error : ${response.statusText}`)
+//         }
+//         daftarFilm = data.Search
+//         boxContent(daftarFilm) // tampilkan filmm
+//         info.textContent =""
+//     }catch(err){
+//         console.error(err)
+//     }
+// }
 
-function boxContent(dataFetch){
-    filmContainer.innerHTML = ""
-    dataFetch.forEach(data => {
-        filmContainer.innerHTML +=`
-        <div class="bg-white w-150 h-auto shadow-xl rounded-md border-1 border-slate-200 px-2">
-        <h1 class="text-3xl mt-4">${data.Title}</h1>
-        <h2 class="text-2xl mt-4 mb-2">${data.Year}</h2>
-        <img src="${data.Poster}" class="w-65 h-70 object-cover mb-2">
-      </div>
-        `
-    })
-}
+// getMovie()
 
-function filterTahun(){
-    const tahun = daftarFilm.filter(data => data.Year > 2010);
-    boxContent(tahun)
-    info.textContent = `🚀 ${tahun.length} Film di tampilkan setelah filter`
-}
+// function boxContent(dataFetch){
+//     filmContainer.innerHTML = ""
+//     dataFetch.forEach(data => {
+//         filmContainer.innerHTML +=`
+//         <div class="bg-white w-150 h-auto shadow-xl rounded-md border-1 border-slate-200 px-2">
+//         <h1 class="text-3xl mt-4">${data.Title}</h1>
+//         <h2 class="text-2xl mt-4 mb-2">${data.Year}</h2>
+//         <img src="${data.Poster}" class="w-65 h-70 object-cover mb-2">
+//       </div>
+//         `
+//     })
+// }
 
-function totalFilm(){
-    const total = daftarFilm.length
-    const totalFilm = daftarFilm.reduce((acc,data) => acc + ", " + data.Title, " ").slice(2);
+// function filterTahun(){
+//     const tahun = daftarFilm.filter(data => data.Year > 2010);
+//     boxContent(tahun)
+//     info.textContent = `🚀 ${tahun.length} Film di tampilkan setelah filter`
+// }
 
-    info.textContent = `📊 ${total} Film di tampilkan: ${totalFilm}`
-}
+// function totalFilm(){
+//     const total = daftarFilm.length
+//     const totalFilm = daftarFilm.reduce((acc,data) => acc + ", " + data.Title, " ").slice(2);
+
+//     info.textContent = `📊 ${total} Film di tampilkan: ${totalFilm}`
+// }
+
+// selesai
+
+
+// 🧪 Latihan 1 – Fetch + Filter + Map
+
+// (async function cariPenggunaPria(){
+//     try{
+//     const respone = await fetch("https://jsonplaceholder.typicode.com/users")
+//     const data = await respone.json()
+//     const cari = data.Search;
+//     const filter = cari.filter(data => data.Gender === "laki - laki")
+//     filter.map(data => {
+//         console.info(`Nama lengkap : ${data.name} , Email : ${data.Email}`)
+//     })
+
+//     }catch(err){
+//         console.info(err)
+//     }
+// })()
+
+// 🧪 Latihan 2 – Reduce Total Karakter Nama
+
+// const respon = fetch("https://jsonplaceholder.typicode.com/users")
+
+// respon.then(data => data.json())
+// .then(data => {
+//   const total = data.map(data => data.name.length).reduce((acc,data) => acc + data,0)
+//   console.info(total)
+// })
+
+// 🧪 Latihan 3 – Error Handling
+
+// async function getDataWithError(){
+//     try{
+//     const respon = await fetch("https://jsonplaceholder.typicode.com/xyz")
+//    if(!respon.ok){
+    //         throw new Error(`Error : ${respon.statusText}`)
+    //     }
+
+    //     const data = await respon.json()
+
+//     console.info(data)
+//     }catch(err){
+//         console.info(`Error nya adalah : ${err}`)
+//     }
+// }
+
+// 🔁 Latihan 1 – Jumlahkan Angka (Dasar)
+// Soal:
+// const angka = [3, 7, 1, 9, 4];
+// Hitung total seluruh angka dengan reduce
+// angka.reduce((acc,element) => acc + element,0)
+
+// 🔁 Latihan 2 – Gabung Nama
+// Soal:
+// const nama = ["Tio", "Andi", "Budi", "Rina"];
+// // Gabungkan jadi satu string: "Tio, Andi, Budi, Rina"
+// const hasil = nama.reduce((acc,element) => acc + `,${element}`).slice(0)
+// console.info(hasil)
+
+// // 🔁 Latihan 3 – Hitung Total Umur dari Array of Object
+// // Soal:
+// const orang = [
+//     { nama: "Andi", umur: 21 },
+//     { nama: "Budi", umur: 25 },
+//     { nama: "Caca", umur: 19 }
+//   ];
+
+//   // Hitung total umur
+// const hasil = orang.map(umur => umur.umur).reduce((acc,element) => acc + element)
+// console.info(hasil)
+
+// 🔁 Latihan 4 – Hitung Jumlah Kategori (Object Counter)
+// Soal:
+// const barang = [
+//     "elektronik",
+//     "pakaian",
+//     "elektronik",
+//     "makanan",
+//     "pakaian",
+//     "pakaian"
+//   ];
+//   // Hitung berapa banyak tiap kategori pakai reduce
+// const hasil = {
+//     elektronik : barang.map(elemet => elemet === "elektronik").reduce((acc,element) => acc + element),
+//     pakaian : barang.map(elemet => elemet === "pakaian").reduce((acc,element) => acc + element),
+//     makanan : barang.map(elemet => elemet === "makanan").reduce((acc,element) => acc + element)
+// }
+
+// console.info(hasil)
+
+// 🔁 Latihan 5 – Ambil Nama Orang dengan Umur Tertua
+// Soal:
+// const orang = [
+//     { nama: "Dewi", umur: 30 },
+//     { nama: "Rio", umur: 41 },
+//     { nama: "Lala", umur: 35 }
+//   ];
+//   // Cari orang dengan umur tertua
+//   const hasil = orang.filter(umur => umur.umur >= 40)
+
